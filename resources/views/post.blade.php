@@ -6,46 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer="" src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    @foreach ($membres as $membre)
     @foreach ($posts as $post)
     <div class="bg-white shadow rounded-lg mb-6">
         <div class="flex flex-row px-2 py-3 mx-3">
             <div class="w-auto h-auto rounded-full">
-                <img class="w-20" src="/storage/{{$post->image}}">
+                <img class="w-20" src="/storage/{{$membre->avatar}}">
             </div>
             <div class="flex flex-col mb-2 ml-4 mt-1">
-                <div class="text-gray-600 text-sm font-semibold">John Doe</div>
-                @endforeach
+                <div class="text-gray-600 text-sm font-semibold">{{$membre->nom}}</div>
+               
                 <div class="flex w-full mt-1">
                     <div class="text-blue-700 font-base text-xs mr-1 cursor-pointer">
                         SEO
                     </div>
                     <div class="text-gray-400 font-thin text-xs">
-                        • 30 seconds ago
+                        • {{$post->ddp}}
                     </div>
                 </div>
             </div>
         </div>
+        
+        
         <div class="border-b border-gray-100"></div>
         <div class="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
             <div class="grid grid-cols-6 col-span-2   gap-2  ">
                 <div class=" overflow-hidden rounded-xl col-span-3 max-h-[14rem]">
-                    <img class="h-full w-full object-cover " src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=735&amp;q=80" alt="">
+                    <img class="h-full w-full object-cover " src="/storage/{{$post->photo}}" alt="">
                 </div>
-                <div class=" overflow-hidden rounded-xl col-span-3 max-h-[14rem]">
-                    <img class="h-full w-full object-cover  " src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1399&amp;q=80" alt="">
-                </div>
-                <div class=" overflow-hidden rounded-xl col-span-2 max-h-[10rem]">
-                    <img class="h-full w-full object-cover " src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80" alt="">
-                </div>
-                <div class=" overflow-hidden rounded-xl col-span-2 max-h-[10rem]">
-                    <img class="h-full w-full object-cover " src="https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80" alt="">
-                </div>
-                <div class="relative overflow-hidden rounded-xl col-span-2 max-h-[10rem]">
-                    <img class="h-full w-full object-cover " src="https://images.unsplash.com/photo-1560393464-5c69a73c5770?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=765&amp;q=80" alt="">
-                </div>
+                
+                  
             </div>
         </div>
-        <div class="text-gray-500 text-sm mb-6 mx-3 px-2">Lorem Ipsum is simply dummy ... <span class="text-gray-400">more</span></div>
+        <div class="text-gray-500 text-sm mb-6 mx-3 px-2">{{$post->contenu}}<span class="text-gray-400">more</span></div>
         <div class="flex justify-start mb-4 border-t border-gray-100">
             <div class="flex w-full mt-1 pt-2 pl-5">
                 <span class="bg-white transition ease-out duration-300 hover:text-red-500 border w-8 h-8 px-2 pt-2 text-center rounded-full text-gray-400 cursor-pointer mr-2">
@@ -82,7 +75,7 @@
         </div>
 
         <div class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
-            <img class="w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer" alt="User avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2000&amp;q=80">
+            <img class="w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer" alt="User avatar" src="/storage/{{$membre->avatar}}">
             <span class="absolute inset-y-0 right-0 flex items-center pr-6">
                 <button type="submit" class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
                 <svg class="w-6 h-6 transition ease-out duration-300 hover:text-blue-500 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -94,3 +87,6 @@
                <input type="search" class="w-full py-2 pl-4 pr-10 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 focus:text-gray-900 focus:shadow-outline-blue" style="border-radius: 25px" placeholder="Post a comment..." autocomplete="off">
         </div>
     </div>
+    @endforeach
+    @endforeach
+    @include('includes.formulaire')

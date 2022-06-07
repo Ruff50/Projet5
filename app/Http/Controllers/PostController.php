@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Membre;
 use App\Models\Post;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -16,55 +17,39 @@ class PostController extends Controller
 {
     public function getall()
     {
-        return view('post');
-    }
-
-    public function add(Request $request){
-
-       
-     
-    
-        $validate = $request->validate([
-            'titre' => 'required|max:255',
-            'contenu' => 'required|max:255',
-            'ddp' => 'required|max:150',
-            'photo' => 'required|max:255',
-            
-           
-    
-    
-        ]);
-    
-        $posts = new Post();
-    
-        $posts->titre = $validate['titre'];
-        $posts->contenu = $validate['contenu'];
-      
-        //$posts->affiche = $validate['affiche'];
-      
-        $posts->ddp = $validate['ddp'];
-        $posts->photo = $validate['photo'];
         
+        
+            $posts = Post::with('Membre')->get();
+            $membre = Membre::all();
+            
     
-        $posts->save();
+            return view('post', [
+                //'films' c'est la variable utilisé dans le view et $films c'est la variable de la fonction 
+                'posts' => $posts,
+                'membres' => $membre,
+                
     
-    
-        return redirect()->route('post');
+            ]);
+        
     }
 
+   
 
     public function create(Request $request)
     {
-        $path = Storage::disk('public')->put('img', $request->file('images'));
+        
         
        
-       
+        
+        $posts = Post::with('Membre')->get();
+        $membre = Membre::all();
         $posts = Post::create([
             'titre' => $request->titre,
             'contenu' => $request->contenu,
             'ddp' => NOW(),
             'censure' => $request->censure,
-            'photo'=> $path,
+            
+            'membres' => $membre,
      
 
         ]);
@@ -76,4 +61,74 @@ class PostController extends Controller
 
         return redirect()->route('post')->with('success', 'Post ajouté');
     }
+
+    public function accueil()
+    {
+        $posts = Post::with('Membre')->get();
+        $membre = Membre::all();
+       
+       
+        return view('welcome', [
+
+            
+            'posts' => $posts,
+             'membres' => $membre,
+            
+
+
+
+        ]);
+}
+
+public function delete($id)
+{
+    $posts = Post::where('id', '=', $id);
+    $posts->delete();
+    return redirect()->route('post');
+}
+public function crud()
+{
+    $posts = Post::with('Membre')->get();
+    $membre = Membre::all();
+   
+   
+    return view('crud', [
+
+        
+        'posts' => $posts,
+         'membres' => $membre,
+        
+
+
+
+    ]);
+}
+public function creates(Request $request)
+{
+  
+    $path = Storage::disk('public')->put('img', $request->file('images'));
+    $posts = Post::with('Membre')->get();
+    $membre = Membre::all();
+    $posts = Post::create([
+        'titre' => $request->titre,
+        'contenu' => $request->contenu,
+        'ddp' => NOW(),
+        'censure' => $request->censure,
+        'photo' => $path,
+        'membres' => $membre,
+ 
+
+    ]);
+
+  dd($path);
+    
+    $posts->save();
+   
+
+    return redirect()->route('crud')->with('success', 'Post ajouté');
+
+
+
+    
+}
 }
