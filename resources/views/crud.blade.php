@@ -32,7 +32,7 @@
     <td class="px-4 py-3"><a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
 		<i class="material-icons-outlined text-base">visibility</i></a> </td>
 	<td class="px-4 py-3">@include('includes.delete') </td>
-	<td class="px-4 py-3">@include('update')
+	<td class="px-4 py-3">@include('includes.update')
 		 <td>	
   </tr>
   @endforeach

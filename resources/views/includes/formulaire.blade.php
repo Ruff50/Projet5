@@ -96,9 +96,9 @@
                             </div>
                                
                             <select name = "membres" class="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                @foreach ($membres as $real)
-                              <option value="{{$real['id']}}"> 
-                                  {{ $real['nom'] }} {{ $real['prenom']}}
+                                @foreach ($membres as $membre)
+                              <option value="{{$membre['id']}}"> 
+                                  {{ $membre['nom'] }} {{ $membre['prenom']}}
                             </option>
                               @endforeach
                             </select>
@@ -116,7 +116,8 @@
                                 class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
                                 Cancel
                               </button>
-                             
+                              <label for="affiche"> affiche </label>
+                            <input type="file" name="photo" value="" required>
                             </div>
                           </form>
                         </div>

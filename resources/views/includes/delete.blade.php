@@ -1,5 +1,5 @@
 
-                    <form action="{{ route('delete', $posts['id']) }}" method="post">
+                    <form action="{{ route('delete', $post['id']) }}" method="post">
                         @csrf
                         @method('delete')
                         
