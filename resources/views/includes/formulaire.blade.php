@@ -117,7 +117,7 @@
                                 Cancel
                               </button>
                               <label for="affiche"> affiche </label>
-                            <input type="file" name="photo" value="" required>
+                            <input type="file" name="image" value="" required>
                             </div>
                           </form>
                         </div>

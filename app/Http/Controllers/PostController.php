@@ -90,7 +90,8 @@ public function delete($id)
 public function update(Request $request, $id)
 {
 
-   $path = Storage::disk('public')->put('img', $request->file('photo'));    //chemin + nom image
+   $path = Storage::disk('public')->put('img', $request->file('image'));    //chemin + nom image
+   
    $posts = Post::find($id);
    $posts->titre = $request->titre;
   
@@ -101,7 +102,7 @@ public function update(Request $request, $id)
    $posts->membre_id= $request->membre;
    $posts->save();
    
- 
+
    return redirect()->route('post');
 }
 

@@ -63,9 +63,7 @@
                                         <form action="{{ route('update', $post['id']) }}" method="POST"
                                             enctype="multipart/form-data">
 
-                                            <!--  a ajouter @csrf pou avoir l'autorisation de poster des donner (error 419)  -->
                                             @csrf
-                                            <!-- Title -->
 
                                             <div>
                                                 <label class="block text-sm font-bold text-black" for="title">
@@ -101,7 +99,7 @@
                                             </select>
                                             
                                             <label for="affiche"> </label>
-                                            <input type="file" class="py-4 text-black" name="images" value="" required>
+                                            <input type="file" class="py-4 text-black" name="photo" value="" required>
 
 
 
