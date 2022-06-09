@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer="" src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    @foreach ($membres as $membre)
+    @foreach ($users as $user)
     @foreach ($posts as $post)
     <div class="bg-white shadow rounded-lg mb-6">
         <div class="flex flex-row px-2 py-3 mx-3">
             <div class="w-auto h-auto rounded-full">
-                <img class="w-20" src="/storage/{{$membre->avatar}};">
+                <img class="w-20" src="/storage/{{$user->avatar}};">
             </div>
             <div class="flex flex-col mb-2 ml-4 mt-1">
-                <div class="text-gray-600 text-sm font-semibold">{{$membre->nom}}</div>
+                <div class="text-gray-600 text-sm font-semibold">{{$user->nom}}</div>
                
                 <div class="flex w-full mt-1">
                     <div class="text-blue-700 font-base text-xs mr-1 cursor-pointer">
@@ -75,7 +75,7 @@
         </div>
 
         <div class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
-            <img class="w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer" alt="User avatar" src="/storage/{{$membre->avatar}}">
+            <img class="w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer" alt="User avatar" src="/storage/{{$user->avatar}}">
             <span class="absolute inset-y-0 right-0 flex items-center pr-6">
                 <button type="submit" class="p-1 focus:outline-none focus:shadow-none hover:text-blue-500">
                 <svg class="w-6 h-6 transition ease-out duration-300 hover:text-blue-500 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

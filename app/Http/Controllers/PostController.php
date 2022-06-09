@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Membre;
 use App\Models\Post;
+use App\Models\Users;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Cache\Store;
@@ -19,14 +20,14 @@ class PostController extends Controller
     {
         
         
-            $posts = Post::with('Membre')->get();
-            $membre = Membre::all();
+            $posts = Post::with('Users')->get();
+            $users = Users::all();
             
     
             return view('post', [
                 //'films' c'est la variable utilisé dans le view et $films c'est la variable de la fonction 
                 'posts' => $posts,
-                'membres' => $membre,
+                'users' => $users,
                 
     
             ]);
@@ -41,15 +42,15 @@ class PostController extends Controller
         
        
      //   $path = Storage::disk('public')->put('img', $request->file('images'));
-        $posts = Post::with('Membre')->get();
-        $membre = Membre::all();
+        $posts = Post::with('users')->get();
+        $users = Users::all();
         $posts = Post::create([
             'titre' => $request->titre,
             'contenu' => $request->contenu,
             'ddp' => NOW(),
             'censure' => $request->censure,
         //    'photo' => $path,
-            'membres' => $membre,
+            'users' => $users,
      
 
         ]);
@@ -59,20 +60,20 @@ class PostController extends Controller
         $posts->save();
        
 
-        return redirect()->route('post')->with('success', 'Post ajouté');
+        return redirect()->route('crud')->with('success', 'Post ajouté');
     }
 
     public function accueil()
     {
-        $posts = Post::with('Membre')->get();
-        $membre = Membre::all();
+        $posts = Post::with('Users')->get();
+        $users = Users::all();
        
        
         return view('welcome', [
 
             
             'posts' => $posts,
-             'membres' => $membre,
+            'users' => $users,
             
 
 
@@ -98,8 +99,8 @@ public function update(Request $request, $id)
  //  $posts->photo = $path;
    $posts->contenu = $request->contenu;
    
-   $posts->date = NOW();
-   $posts->membre_id= $request->membre;
+   $posts->ddp = NOW();
+   $posts->users_id = $request->users;
    $posts->save();
    
 
@@ -108,15 +109,15 @@ public function update(Request $request, $id)
 
 public function crud()
 {
-    $posts = Post::with('Membre')->get();
-    $membre = Membre::all();
+    $posts = Post::with('users')->get();
+    $users = Users::all();
    
    
     return view('crud', [
 
         
         'posts' => $posts,
-         'membres' => $membre,
+         'users' => $users,
         
 
 
@@ -127,15 +128,15 @@ public function creates(Request $request)
 {
   
  //   $path = Storage::disk('public')->put('img', $request->file('images'));
-    $posts = Post::with('Membre')->get();
-    $membre = Membre::all();
+    $posts = Post::with('users')->get();
+    $users = Users::all();
     $posts = Post::create([
         'titre' => $request->titre,
         'contenu' => $request->contenu,
         'ddp' => NOW(),
         'censure' => $request->censure,
     //    'photo' => $path,
-        'membres' => $membre,
+        'users' => $users,
  
 
     ]);

@@ -96,9 +96,9 @@
                             </div>
                                
                             <select name = "membres" class="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                @foreach ($membres as $membre)
-                              <option value="{{$membre['id']}}"> 
-                                  {{ $membre['nom'] }} {{ $membre['prenom']}}
+                                @foreach ($users as $user)
+                              <option value="{{$user['users_id']}}"> 
+                                  {{ $user['nom'] }} {{ $user['prenom']}}
                             </option>
                               @endforeach
                             </select>
