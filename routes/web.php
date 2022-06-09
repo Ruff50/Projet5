@@ -60,3 +60,4 @@ Route::post('login', [Authcontroller::class, 'login_action'])->name('login.actio
 
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
 
+Route::resource('User',Userscontroller::class);
