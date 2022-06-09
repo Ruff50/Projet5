@@ -5,9 +5,9 @@
 
 @section('main')
 
-@include('components/addFilms')
 
-    <h1 class="text-3xl text-center font-bold text-gray-300 mt-20 mb-10">Liste des Films</h1>
+
+    <h1 class="text-3xl text-center font-bold text-gray-900 mt-20 mb-10">Liste des Utilisateurs</h1>
     @if (session('status'))
     <div class="text-3xl text-left font-bold text-green-600 mt-20 mb-10">
         {{ session('status') }}
@@ -27,10 +27,10 @@
         <tr>
           <th
             class="text-white bg-gray-600">
-            Titre</th>
+            Nom</th>
             <th
             class="text-white bg-gray-600">
-            Réalisateur</th>  
+            email</th>  
             <th
             class="text-white bg-gray-600">
             Action</
@@ -44,13 +44,13 @@
         <tr>
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center font-bold text-red-600">
-                <a href="{{route('Films_Crud.show', $film->id)}}"> {{ $membre->prenom}}{{ $membre->name}} </a>
+                <a href="{{route('Users.show', $membre->id)}}"> {{ $membre->prenom}} {{ $membre->name}} </a>
               </div>
 
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center font-bold text-red-600">
-                <a href="/realisateur/{{$film->realisateurs_id}}"> {{ $membre->email}}</a>
+                <a href="#"> {{ $membre->email}}</a>
               </div>
 
             </td>
@@ -72,34 +72,10 @@
           <br>
           @endforeach
           @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-            <div class="flex items-center font-bold text-red-600">
-              <a href="/realisateur/{{$film->realisateurs_id}}"> {{ $membre->email}}</a>
-            </div>
-
-          </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center justify-between font-bold text-red-600 flex1 m-0">
-                <a href="{{route('Films_Crud.edit', $film->id)}}" style="color:darkgreen">Mettre à jour</a>
-                <form action="{{route('Films_Crud.destroy', $film->id)}}" method="POST">
+                <a href="{{route('Users.edit', $membre->id)}}" style="color:darkgreen">Mettre à jour</a>
+                <form action="{{route('Users.destroy', $membre->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
                 <input type="submit" value="Supprimer">

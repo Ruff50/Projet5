@@ -292,3 +292,4 @@ class Filmscontroller extends Controller
         return  redirect()->route('Films_Crud.index')->with('status', 'le film a bien été supprimé !');
     }
 }
+*/

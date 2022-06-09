@@ -819,9 +819,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .justify-between {
   justify-content: space-between;
 }
-.justify-evenly {
-  justify-content: space-evenly;
-}
 .gap-2 {
   gap: 0.5rem;
 }
@@ -854,11 +851,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-.space-x-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .self-center {
   align-self: center;
@@ -1472,10 +1464,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
-.hover\:text-gray-900:hover {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-}
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1758,10 +1746,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: block;
   }
 
-  .md\:flex {
-    display: flex;
-  }
-
   .md\:grid {
     display: grid;
   }
@@ -1776,10 +1760,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:w-3\/4 {
     width: 75%;
-  }
-
-  .md\:flex-1 {
-    flex: 1 1 0%;
   }
 
   .md\:grid-flow-row-dense {
@@ -1837,10 +1817,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:w-auto {
     width: auto;
-  }
-
-  .lg\:w-0 {
-    width: 0px;
   }
 
   .lg\:border-b-0 {

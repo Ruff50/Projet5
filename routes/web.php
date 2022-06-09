@@ -5,8 +5,9 @@ use App\Http\Controllers\CommentaireController;
 
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\Membrecontroller;
-
+use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +61,4 @@ Route::post('login', [Authcontroller::class, 'login_action'])->name('login.actio
 
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
 
-Route::resource('User',Userscontroller::class);
+Route::resource('Users',Userscontroller::class);
