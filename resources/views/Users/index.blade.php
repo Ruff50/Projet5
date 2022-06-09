@@ -39,21 +39,63 @@
 
       <tbody class="bg-gray-900">
        
-        @foreach ($films as $film)  
+        @foreach ($membres as $membre)  
         
         <tr>
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center font-bold text-red-600">
-                <a href="{{route('Films_Crud.show', $film->id)}}"> {{ $film->titre}}</a>
+                <a href="{{route('Films_Crud.show', $film->id)}}"> {{ $membre->prenom}}{{ $membre->name}} </a>
               </div>
 
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center font-bold text-red-600">
-                <a href="/realisateur/{{$film->realisateurs_id}}"> {{ $film->realisateur->prenom}} {{ $film->realisateur->nom}}</a>
+                <a href="/realisateur/{{$film->realisateurs_id}}"> {{ $membre->email}}</a>
               </div>
 
             </td>
+          </td>
+
+          @if (null!==(Auth::user()))
+
+
+          <div class="text-2xl text-left text-amber-900 mt-20 mb-10">Welcome <b>{{Auth::user()->name}}</b></div>
+          <p>Liste des roles :</p>
+          
+          @foreach ($membres as $membre)
+          @if ($membre->name===Auth::user()->name)
+          @foreach ($membre->roles as $role)
+          {{$role->rolename}} <br>
+          @endforeach
+          
+          @endif
+          <br>
+          @endforeach
+          @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+            <div class="flex items-center font-bold text-red-600">
+              <a href="/realisateur/{{$film->realisateurs_id}}"> {{ $membre->email}}</a>
+            </div>
+
+          </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center justify-between font-bold text-red-600 flex1 m-0">
                 <a href="{{route('Films_Crud.edit', $film->id)}}" style="color:darkgreen">Mettre à jour</a>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Userscontroller extends Controller
 {
@@ -13,7 +16,14 @@ class Userscontroller extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with('roles')->get();
+        
+        return view(
+            'Users.index',
+            [
+                'membres' => $users
+            ]
+        );      
     }
 
     /**
@@ -84,9 +94,9 @@ class Userscontroller extends Controller
 }
 
 
-<?php
+/*<?php */
 
-namespace App\Http\Controllers;
+/*namespace App\Http\Controllers;
 
 use App\Models\Films;
 use App\Models\Salles;
@@ -102,7 +112,7 @@ class Filmscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /*public function index()
     {
         $cines = Films::with('salle')->with('categories')->get();
         $real = Réalisateur::all();
@@ -134,7 +144,7 @@ class Filmscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add(Request $request)
+    /*public function add(Request $request)
     {
     }
 
@@ -144,7 +154,7 @@ class Filmscontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         $input = $request->input();
         $request->validate([
@@ -193,7 +203,7 @@ class Filmscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $film = Films::findOrFail($id);
         $real = Réalisateur::all();
@@ -211,7 +221,7 @@ class Filmscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+   /* public function edit($id)
     {
         $film= Films::find($id);
         $real = Réalisateur::all();
@@ -231,7 +241,7 @@ class Filmscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request, $id)
     {
 
         $request->validate([
@@ -276,7 +286,7 @@ class Filmscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   /* public function destroy($id)
     {
         Films::find($id)->delete();
         return  redirect()->route('Films_Crud.index')->with('status', 'le film a bien été supprimé !');

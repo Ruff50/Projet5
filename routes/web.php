@@ -34,3 +34,5 @@ Route::get('login', [Authcontroller::class, 'login'])->name('login');
 Route::post('login', [Authcontroller::class, 'login_action'])->name('login.action');
 
 Route::post('signout', [Authcontroller::class, 'logout'])->name('signout');
+
+Route::resource('User',Userscontroller::class);
