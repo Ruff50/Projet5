@@ -11,7 +11,7 @@
     <div class="bg-white shadow rounded-lg mb-6">
         <div class="flex flex-row px-2 py-3 mx-3">
             <div class="w-auto h-auto rounded-full">
-                <img class="w-20" src="/storage/{{$membre->avatar}}">
+                <img class="w-20" src="/storage/{{$membre->avatar}};">
             </div>
             <div class="flex flex-col mb-2 ml-4 mt-1">
                 <div class="text-gray-600 text-sm font-semibold">{{$membre->nom}}</div>

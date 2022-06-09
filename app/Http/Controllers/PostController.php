@@ -40,7 +40,7 @@ class PostController extends Controller
         
         
        
-        $path = Storage::disk('public')->put('img', $request->file('images'));
+     //   $path = Storage::disk('public')->put('img', $request->file('images'));
         $posts = Post::with('Membre')->get();
         $membre = Membre::all();
         $posts = Post::create([
@@ -48,7 +48,7 @@ class PostController extends Controller
             'contenu' => $request->contenu,
             'ddp' => NOW(),
             'censure' => $request->censure,
-            'photo' => $path,
+        //    'photo' => $path,
             'membres' => $membre,
      
 
@@ -90,12 +90,12 @@ public function delete($id)
 public function update(Request $request, $id)
 {
 
-   $path = Storage::disk('public')->put('img', $request->file('image'));    //chemin + nom image
+  // $path = Storage::disk('public')->put('img', $request->file('image'));    //chemin + nom image
    
    $posts = Post::find($id);
    $posts->titre = $request->titre;
   
-   $posts->photo = $path;
+ //  $posts->photo = $path;
    $posts->contenu = $request->contenu;
    
    $posts->date = NOW();
@@ -103,7 +103,7 @@ public function update(Request $request, $id)
    $posts->save();
    
 
-   return redirect()->route('post');
+   return redirect()->route('crud');
 }
 
 public function crud()
@@ -126,7 +126,7 @@ public function crud()
 public function creates(Request $request)
 {
   
-    $path = Storage::disk('public')->put('img', $request->file('images'));
+ //   $path = Storage::disk('public')->put('img', $request->file('images'));
     $posts = Post::with('Membre')->get();
     $membre = Membre::all();
     $posts = Post::create([
@@ -134,7 +134,7 @@ public function creates(Request $request)
         'contenu' => $request->contenu,
         'ddp' => NOW(),
         'censure' => $request->censure,
-        'photo' => $path,
+    //    'photo' => $path,
         'membres' => $membre,
  
 

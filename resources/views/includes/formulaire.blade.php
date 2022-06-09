@@ -116,8 +116,7 @@
                                 class="px-6 py-2 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300">
                                 Cancel
                               </button>
-                              <label for="affiche"> affiche </label>
-                            <input type="file" name="image" value="" required>
+                        
                             </div>
                           </form>
                         </div>
