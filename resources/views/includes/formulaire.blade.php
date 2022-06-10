@@ -104,7 +104,9 @@
                             </select>
                          
                             
-                           
+                            <label for="affiche">  </label>
+                            <input type="file"class="py-4 text-black" name="images" value="" required>
+
                             
                             <input type="hidden" name="id" value="{{$user['users_id']}}">
                             <div class="flex items-center justify-start mt-4 gap-x-2">

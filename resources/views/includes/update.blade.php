@@ -1,4 +1,4 @@
-@extends('layouts.app')
+
 
 
 <div class="flex flex-col">
