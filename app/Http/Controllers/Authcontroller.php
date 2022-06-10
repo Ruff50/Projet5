@@ -22,12 +22,14 @@ class Authcontroller extends Controller
         //dd($input);
         $validate = $request->validate([
             'name' =>'required',
+            'prenom' =>'required',
             'email' => 'required|unique:users,email|max:255',
             'password' => 'required',
         ]);
 
         $membre = new User();
         $membre->name=$validate['name'];
+        $membre->prenom=$validate['prenom'];
         $membre->email = $validate['email'];
         $membre->password = Hash::make($validate['password']);
         $membre->save();

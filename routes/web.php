@@ -21,9 +21,7 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/', [PostController::class, 'accueil'])->name('welcome');
 Route::get('/post', [PostController::class, 'getall'])->name('post');
 Route::post('/post', [PostController::class, 'create'])->name('post');
@@ -34,8 +32,7 @@ Route::post('/crud', [PostController::class, 'creates'])->name('creates');
 
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/', function () {
-    return view('index');})->name('home');
+
 });
 
 

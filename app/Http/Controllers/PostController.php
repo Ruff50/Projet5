@@ -42,7 +42,7 @@ class PostController extends Controller
         
         
        
-     //   $path = Storage::disk('public')->put('img', $request->file('images'));
+       $path = Storage::disk('public')->put('img', $request->file('images'));
         $posts = Post::with('users')->where('users_id','=','id')->get();
         $users = User::all();
         $posts = Post::create([
@@ -50,7 +50,7 @@ class PostController extends Controller
             'contenu' => $request->contenu,
             'ddp' => NOW(),
             'censure' => $request->censure,
-        //    'photo' => $path,
+           'photo' => $path,
             'users' => $users,
             'users_id' => $request->id
      
@@ -67,7 +67,7 @@ class PostController extends Controller
 
     public function accueil()
     {
-        $posts = Post::with('users')->where('users_id','=','id')->get();
+        $posts = Post::all();
         $users = User::all();
        
        
@@ -129,7 +129,7 @@ public function crud()
 public function creates(Request $request)
 {
   
- //   $path = Storage::disk('public')->put('img', $request->file('images'));
+   $path = Storage::disk('public')->put('img', $request->file('images'));
     $posts = Post::with('users')->where('users_id','=','id')->get();
     $users = User::all();
     $posts = Post::create([
@@ -137,7 +137,7 @@ public function creates(Request $request)
         'contenu' => $request->contenu,
         'ddp' => NOW(),
         'censure' => $request->censure,
-    //    'photo' => $path,
+        'photo' => $path,
         'users' => $users,
  
 
