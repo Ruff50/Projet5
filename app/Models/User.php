@@ -50,6 +50,7 @@ class User extends Authenticatable
     }
 
 
+
     public function centreinterets()
     
     
@@ -60,4 +61,4 @@ class User extends Authenticatable
     
   
 
-}
+
