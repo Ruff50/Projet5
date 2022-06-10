@@ -4,6 +4,7 @@
 use App\Http\Controllers\CommentaireController;
 
 use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\CentreInteretController;
 use App\Http\Controllers\Membrecontroller;
 use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
@@ -60,5 +61,22 @@ Route::get('login', [Authcontroller::class, 'login'])->name('login');
 Route::post('login', [Authcontroller::class, 'login_action'])->name('login.action');
 
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
+
+
+
+// Les centres d'intérets
+
+Route::get('/centreinteret',[CentreInteretController::class, 'index'])->name('centreinteret');
+
+Route::post('/centreinteret',[CentreInteretController::class, 'store'])->name('centreinteret.store');
+
+Route::get('/centreinteret/{id}',[CentreInteretController::class, 'show'])->name('centreinteret.show');
+
+Route::get('/centreinteret/{id}/edit',[CentreInteretController::class, 'edit'])->whereNumber('id')->name('centreinteret.edit');
+
+Route::post('/centreinteret/{id}/edit',[CentreInteretController::class, 'update'])->name('centreinteret.update');
+
+
+
 
 Route::resource('Users',Userscontroller::class);

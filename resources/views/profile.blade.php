@@ -7,7 +7,7 @@
 
 
 <div>
-    <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:grid md:grid-cols-3 md:gap-6 m-4">
       @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
@@ -96,12 +96,22 @@
               </div>
             </div>
 
-                  
-            
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button type="submit" name="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
             </div>
           </div>
+        </form>
+        <form method="get" action="/centreinteret/{{$membre->id}}/edit">
+          @csrf
+        <div>
+          <div>
+           <a href="/centreinteret/{{$membre->id}}/edit"> <p> Vos centres d'interets</p></a>
+          </div>
+          <div>
+            @include('components.SliderInterets')
+          </div>
+        </div>
+  
         </form>
       </div>
     </div>

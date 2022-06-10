@@ -48,4 +48,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Roles::class);
 
     }
-}
+
+
+
+    public function centreinterets()
+    
+    
+   
+    {
+        return $this->belongsToMany(CentreInteret::class, 'user_interets', 'users_id', 'ci_id' );
+    }
+    
+  
+
+
