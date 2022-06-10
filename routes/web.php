@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\Membrecontroller;
+use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware(['auth'])->group(function () {
+    Route::resource('Users',Userscontroller::class);
 Route::get('/', function () {
     return view('index');})->name('home');
 });
@@ -33,6 +35,5 @@ Route::get('login', [Authcontroller::class, 'login'])->name('login');
 
 Route::post('login', [Authcontroller::class, 'login_action'])->name('login.action');
 
-Route::post('signout', [Authcontroller::class, 'logout'])->name('signout');
+Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
 
-Route::resource('User',Userscontroller::class);

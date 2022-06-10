@@ -37,13 +37,17 @@ class AuthMiddleware
 
           foreach ($util->roles as $role) {
 
-          if ($role->rolename ==='SuperAdmin'){ 
+          if ($role->rolename==="SuperAdmin"){ 
                
         return $next($request);
-      }else {return redirect()->route('profile',$id)->with('status', "vous n'avez pas les droits d'accès du statut SuperAdmin !");}  
+                                              }
     } } 
+    
+    return redirect()->route('profile',$id)->with('status', "vous n'avez pas les droits d'accès du statut SuperAdmin !");
+   
      } else{
        return redirect()->route('home');
     }
-    }
+  
+}
 }
