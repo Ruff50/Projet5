@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentaireController;
 
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\Membrecontroller;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
@@ -19,6 +20,19 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/', [PostController::class, 'accueil'])->name('welcome');
+Route::get('/post', [PostController::class, 'getall'])->name('post');
+Route::post('/post', [PostController::class, 'create'])->name('post');
+Route::delete('/delete/{id}', [PostController::class, 'delete'])->whereNumber('id')->name('delete');
+Route::post('/update/{id}', [PostController::class, 'update'])->name('update');
+Route::get('/crud', [PostController::class, 'crud'])->name('crud');
+Route::post('/crud', [PostController::class, 'creates'])->name('creates');
+
+
 Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return view('index');})->name('home');
