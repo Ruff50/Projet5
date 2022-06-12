@@ -11,7 +11,19 @@
 </ul>
 </div>
 @endif
+
+@if (session('status'))
+      <div class="text-3xl text-left font-bold text-green-600 mt-20 mb-10">
+          {{ session('status') }}
+      </div>
+  @endif
 <div class="bg-gray-100 dark:bg-slate-800 relative rounded-lg p-8 sm:p-12 shadow-lg">
+
+  <div> <a href="/roles_user/{{$util->id}}/edit"> <button class="btn btn-success">  <i class="fa-solid fa-pen"></i> &nbsp Mettre à jour vos rôles</button></a> </div>
+
+</div>
+
+  
     <form action="{{Route('Users.update', $util->id)}}" method="POST" enctype="multipart/form-data">
         <br>
         @csrf

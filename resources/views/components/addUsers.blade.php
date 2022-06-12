@@ -51,7 +51,8 @@
 
 
 <div class="bg-gray-100 dark:bg-slate-800 relative rounded-lg p-8 sm:p-12 shadow-lg">
-<form action="{{Route('Users.store')}}" method="POST" enctype="multipart/form-data">
+
+  <form action="{{Route('Users.store')}}" method="POST" enctype="multipart/form-data">
     <br>
     @csrf
 

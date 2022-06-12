@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\Membrecontroller;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,8 @@ Route::get('login', [Authcontroller::class, 'login'])->name('login');
 Route::post('login', [Authcontroller::class, 'login_action'])->name('login.action');
 
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
+
+Route::get('/roles_user/{id}/edit',[RolesController::class, 'edit'])->whereNumber('id')->name('roles_user.edit');
+
+Route::post('/roles_user/{id}/edit',[RolesController::class, 'update'])->name('roles_user.update');
 
