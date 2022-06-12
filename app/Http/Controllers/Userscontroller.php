@@ -172,7 +172,7 @@ class Userscontroller extends Controller
             
             $membre->name = $request->name;
             $membre->email = $request->email;
-            $membre->password =Hash::make($request->password);
+            $membre->password =$request->password;
             $date = $request->ddn; //we got DD/MM/YYYY format date from form post data
             $membre->ddn = date('Y/m/d', strtotime($date)); 
             $membre->sexe = $request->sexe;

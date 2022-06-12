@@ -23,19 +23,8 @@
 @endif
 @if (null!==(Auth::user()))
 
+<div class="text-2xl text-left text-gray-700 mt-20 mb-10">Welcome <b>{{Auth::user()->name}},</b></div>
 
-<div class="text-2xl text-left text-amber-900 mt-20 mb-10">Welcome <b>{{Auth::user()->name}}</b></div>
-<p>Liste des roles :</p>
-
-@foreach ($membres as $util)
-@if ($util->name===Auth::user()->name)
-@foreach ($util->roles as $role)
-{{$role->rolename}} <br>
-@endforeach
-
-@endif
-<br>
-@endforeach
 @endif
     <table class="min-w-full mb-14">
       <thead class="h-12">
