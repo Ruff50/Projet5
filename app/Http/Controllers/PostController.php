@@ -93,20 +93,26 @@ public function delete($id)
 public function update(Request $request, $id)
 {
 
-  // $path = Storage::disk('public')->put('img', $request->file('image'));    //chemin + nom image
-   
-   $posts = Post::find($id);
-   $posts->titre = $request->titre;
-  
- //  $posts->photo = $path;
-   $posts->contenu = $request->contenu;
-   
-   $posts->ddp = NOW();
-   $posts->users_id = $request->users;
-   $posts->save();
-   
+    $path = Storage::disk('public')->put('img', $request->file('images'));
+        $posts = Post::find($id);
+       
+        $posts->update([
+           
+            'titre' => $request->titre,
+            'contenu' => $request->contenu,
+            'ddp' => NOW(),
+            'censure' => $request->censure,
+            'photo' => $path,
+            
+        ]);
+            
+        
+         
+        $posts->save();
+       
 
-   return redirect()->route('crud');
+        return redirect()->route('crud')->with('success', 'Post ajouté');
+     
 }
 
 public function crud()

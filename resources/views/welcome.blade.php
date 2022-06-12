@@ -208,9 +208,9 @@
     <div class="border-b border-gray-100"></div>
     <div class="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
        
-            <div class=" overflow-hidden rounded-xl col-span-3 max-h-[14rem]">
-                <img class="h-full w-full object-cover " src="/storage/{{$post->photo}}" alt="">
-            </div>
+      <div class=" overflow-hidden rounded-xl col-span-3 h-[28rem] w-full ">
+        <img class="rounded w-auto h-auto " src="/storage/{{$post->photo}}" alt="">
+    </div>
             
               
        

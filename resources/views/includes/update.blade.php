@@ -1,6 +1,3 @@
-
-
-
 <div class="flex flex-col">
 
     <div class="mt-16 flex justify-center">
@@ -97,9 +94,12 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            
+
                                             <label for="affiche"> </label>
-                                            <input type="file" class="py-4 text-black" name="photo" value="" required>
+                                            <input type="file" class="py-4 text-black" name="images" value="" required>
+
+
+                                            <input type="hidden" name="id" value="{{ $user['users_id'] }}">
 
 
 
