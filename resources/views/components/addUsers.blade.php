@@ -73,7 +73,10 @@
         <label for="email">Entrez votre email svp:</label>
         <input type="email" placeholder="sophie@example.com" size="30" name="email" >
       </div>
-
+      <div class="mb-6">
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password" >
+      </div>
       <div class="mb-6">
         <label for="ddn">Entrez votre date de naissance svp:</label>
             <input id="date" name="ddn" type="date" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">

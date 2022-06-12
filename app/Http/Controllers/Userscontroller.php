@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class Userscontroller extends Controller
@@ -49,6 +50,7 @@ class Userscontroller extends Controller
             'prenom' => 'required|max:255',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
+            'password' => 'required',
             'ddn' => 'required',
             'sexe' => 'required',
             'metier' => 'required',
@@ -86,6 +88,7 @@ class Userscontroller extends Controller
                 }
             $util->name = $request->name;
             $util->email = $request->email;
+            $util->password =Hash::make($request->password);
             $util->ddn = $request->ddn;
             $util->sexe = $request->sexe;
             $util->metier = $request->metier;
@@ -137,6 +140,7 @@ class Userscontroller extends Controller
             'prenom' => 'required|max:255',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
+            'password' => 'required',
             'ddn' => 'required',
             'sexe' => 'required',
             'metier' => 'required',
@@ -168,6 +172,7 @@ class Userscontroller extends Controller
             
             $membre->name = $request->name;
             $membre->email = $request->email;
+            $membre->password =Hash::make($request->password);
             $date = $request->ddn; //we got DD/MM/YYYY format date from form post data
             $membre->ddn = date('Y/m/d', strtotime($date)); 
             $membre->sexe = $request->sexe;
