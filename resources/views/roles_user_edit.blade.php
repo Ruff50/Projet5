@@ -19,7 +19,9 @@
                     @foreach ($roles as $role)
                    
                     <option
-                   
+                   @foreach ($util->roles as $u)
+                   @if ($role->id===$u->id) selected @endif
+                   @endforeach
                      value="{{$role->id}}" >{{$role->rolename}} </option>
                         @endforeach
                    
