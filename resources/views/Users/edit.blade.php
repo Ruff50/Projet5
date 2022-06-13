@@ -23,6 +23,7 @@
 
 </div>
 
+<div class="flex ml-10 mr-10">
   
     <form action="{{Route('Users.update', $util->id)}}" method="POST" enctype="multipart/form-data">
         <br>

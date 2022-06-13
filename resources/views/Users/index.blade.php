@@ -4,13 +4,8 @@
 
 @section('main')
 
-<<<<<<< HEAD
-
-
-=======
 @include('components/addUsers')
 
->>>>>>> crudUser
     <h1 class="text-3xl text-center font-bold text-gray-900 mt-20 mb-10">Liste des Utilisateurs</h1>
     @if (session('status'))
     <div class="text-3xl text-left font-bold text-green-600 mt-20 mb-10">
@@ -26,23 +21,17 @@
     </ul>
 </div>
 @endif
+
 @if (null!==(Auth::user()))
 
-<div class="text-2xl text-left text-gray-700 mt-20 mb-10">Welcome <b>{{Auth::user()->name}},</b></div>
+<div class="text-2xl text-left text-gray-700 mt-20 ml-10 mr-10 mb-10">Welcome <b>{{Auth::user()->name}},</b></div>
 
 @endif
-    <table class="min-w-full mb-14">
+<div class="flex">
+    <table class="w-full mb-14 ml-10 mr-10">
       <thead class="h-12">
         <tr>
-          <th
-            class="text-white bg-gray-600">
-<<<<<<< HEAD
-            Nom</th>
-            <th
-            class="text-white bg-gray-600">
-            email</th>  
-            <th
-=======
+          <th class="text-white bg-gray-600">
             Prénom  Nom</th>
             <th
             class="text-white bg-gray-600">
@@ -51,7 +40,6 @@
             class="text-white bg-gray-600">
            roles</th> 
            <th
->>>>>>> crudUser
             class="text-white bg-gray-600">
             Action</
           </tr>
@@ -83,15 +71,6 @@
             <div class="max-w-md mx-auto">
               <label for="select" class="font-semibold block py-2 text-red-600">Roles :</label>
           
-<<<<<<< HEAD
-          @endif
-          <br>
-          @endforeach
-          @endif
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-              <div class="flex items-center justify-between font-bold text-red-600 flex1 m-0">
-                <a href="{{route('Users.edit', $membre->id)}}" style="color:darkgreen">Mettre à jour</a>
-=======
               <div class="relative">
                 <div class="h-6 bg-gray-800 flex border border-gray-200 rounded items-center">
                   <select name="roles">
@@ -120,7 +99,6 @@
            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center justify-between font-bold text-red-600 flex1 m-0">
                 <a href="{{route('Users.edit', $membre->id)}}" style="color:green">Mettre à jour</a>
->>>>>>> crudUser
                 <form action="{{route('Users.destroy', $membre->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
@@ -135,7 +113,7 @@
        
     </tbody>
   </table>   
-
+</div>
 
     
 @endsection
