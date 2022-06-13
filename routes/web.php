@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\CommentaireController;
-use App\Http\Controllers\Amiscontroller;
+use App\Http\Controllers\AmisController;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\CentreInteretController;
 use App\Http\Controllers\Membrecontroller;
@@ -107,9 +107,9 @@ Route::get('/profilepub/{id}', [MembreController::class, 'showprofile'])->whereN
 
 // Les amis
 
-Route::get('/amis/',[Amiscontroller::class, 'showamis'])->name('amis');
+Route::get('/amis',[AmisController::class, 'showamis'])->name('amis');
 // Route::get('/amis/',[Amiscontroller::class, 'showdemandeamis'])->name('demandeamis');
-Route::post('/amis/store',[Amiscontroller::class, 'storeamis'])->name('amis.store');
+Route::post('/amis/store',[AmisController::class, 'storeamis'])->name('amis.store');
 
 // accepter un amis
-Route::post('/amis/accept',[Amiscontroller::class, 'acceptamis'])->name('amis.accept');    
+Route::post('/amis/accept',[AmisController::class, 'acceptamis'])->name('amis.accept');    
