@@ -2,12 +2,16 @@
 
 
 use App\Http\Controllers\CommentaireController;
-
+use App\Http\Controllers\Amiscontroller;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\CentreInteretController;
 use App\Http\Controllers\Membrecontroller;
+
+use App\Http\Controllers\PostController;
+
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\Userscontroller;
+
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
@@ -33,7 +37,7 @@ Route::get('/', function () {
 Route::get('/commentaire',[CommentaireControllerer::class, 'getComm'])->name('Commentaire');
 
 //cherche les commentaires par post id
-Route::get('/commentaire/{id}',[CommentaireController::class, 'getCommByPost'])->name('CommentaireByPost');
+Route::get('/commentaire/{id}',[CommentaireController::class, 'getCommByPost'])->whereNumber('id')->name('CommentaireByPost');
 
 //Ajoute le champs form pour ajouter un commentaire
 Route::get('/commentaire/create',[CommentaireController::class, 'createComm'])->name('CommentaireCreate');
@@ -82,3 +86,30 @@ Route::get('/roles_user/{id}/edit',[RolesController::class, 'edit'])->whereNumbe
 
 Route::post('/roles_user/{id}/edit',[RolesController::class, 'update'])->name('roles_user.update');
 
+
+
+
+// Les posts de la page d'accueil 
+
+
+Route::get('/',[PostController::class, 'index'])->name('post');
+
+
+// profil public
+
+Route::get('/profilepub',[Membrecontroller::class, 'profilepub'])->name('profilpub');
+Route::get('/profilepub/{id}', [MembreController::class, 'showprofile'])->whereNumber('id');
+// le compteur de like
+
+// Route::get('/',[PostController::class, 'nblikes'])->name('like');
+
+
+
+// Les amis
+
+Route::get('/amis/',[Amiscontroller::class, 'showamis'])->name('amis');
+// Route::get('/amis/',[Amiscontroller::class, 'showdemandeamis'])->name('demandeamis');
+Route::post('/amis/store',[Amiscontroller::class, 'storeamis'])->name('amis.store');
+
+// accepter un amis
+Route::post('/amis/accept',[Amiscontroller::class, 'acceptamis'])->name('amis.accept');    

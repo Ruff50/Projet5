@@ -9,6 +9,27 @@ use Illuminate\Support\Facades\Storage;
 
 class Membrecontroller extends Controller
 {
+    public function profilepub()
+    {
+        return view('profilepub');
+    }
+
+    
+    public function show($id)
+    {
+     
+        $user = User::find($id);
+
+        return view('profile', [
+           
+            'user' => $user,
+        ]);
+
+    }
+
+
+
+
     public function edit($id)
     {
         $member = User::find($id);
@@ -81,4 +102,22 @@ class Membrecontroller extends Controller
             return redirect()->route('home');
         }
     }
+
+
+    public function showprofile($id)
+    {
+
+
+         $user = User::find($id);
+         
+        // $user = User::with('centreinterets')->with('posts')->get();
+       
+       
+        return view('profilepub', [
+            'user' => $user,
+            
+        ]);
+    }
+
+
 }

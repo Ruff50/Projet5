@@ -53,12 +53,41 @@ class User extends Authenticatable
 
     public function centreinterets()
     
-    
-   
     {
         return $this->belongsToMany(CentreInteret::class, 'user_interets', 'users_id', 'ci_id' );
     }
     
-  
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    public function likespost()
+    {
+        return $this->hasMany(Like::class, 'posts_id','user_id');
+    }
+
+    // public function amis()
+    // {
+    //     return $this->belongsToMany(Amis::class,'amis', 'amis_id', 'user_id');
+    // }
+
+
+
+
+    public function amis()
+    {
+        return $this->belongsToMany(User::class, 'amis', 'user_id', 'amis_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+ 
+    public function amisde()
+    {
+        return $this->belongsToMany(User::class, 'amis', 'amis_id', 'user_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
 }
 
