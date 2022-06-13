@@ -6,8 +6,14 @@ use App\Http\Controllers\Amiscontroller;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\CentreInteretController;
 use App\Http\Controllers\Membrecontroller;
+
 use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\Userscontroller;
+
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +26,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware(['auth'])->group(function () {
-Route::get('/', function () {
-    return view('index');})->name('home');
+    Route::resource('Users',Userscontroller::class);
+
 });
 
-
+Route::get('/', function () {
+    return view('index');})->name('home');
 
 //cherche tous les commentaires 
 Route::get('/commentaire',[CommentaireControllerer::class, 'getComm'])->name('Commentaire');
@@ -62,13 +69,12 @@ Route::post('login', [Authcontroller::class, 'login_action'])->name('login.actio
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
 
 
+
 // Les centres d'intérets
 
 Route::get('/centreinteret',[CentreInteretController::class, 'index'])->name('centreinteret');
 
 Route::post('/centreinteret',[CentreInteretController::class, 'store'])->name('centreinteret.store');
-
-Route::get('/centreinteret/create',[CentreInteretController::class, 'create'])->name('centreinteret.create');
 
 Route::get('/centreinteret/{id}',[CentreInteretController::class, 'show'])->name('centreinteret.show');
 
@@ -76,9 +82,9 @@ Route::get('/centreinteret/{id}/edit',[CentreInteretController::class, 'edit'])-
 
 Route::post('/centreinteret/{id}/edit',[CentreInteretController::class, 'update'])->name('centreinteret.update');
 
-Route::get('/centreinteret/{id}/delete',[CentreInteretController::class, 'delete'])->name('centreinteret.delete');
+Route::get('/roles_user/{id}/edit',[RolesController::class, 'edit'])->whereNumber('id')->name('roles_user.edit');
 
-Route::post('/centreinteret/{id}/delete',[CentreInteretController::class, 'destroy'])->name('centreinteret.destroy');
+Route::post('/roles_user/{id}/edit',[RolesController::class, 'update'])->name('roles_user.update');
 
 
 

@@ -50,12 +50,14 @@ class User extends Authenticatable
     }
 
 
+
     public function centreinterets()
     
     {
         return $this->belongsToMany(CentreInteret::class, 'user_interets', 'users_id', 'ci_id' );
     }
     
+
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -88,3 +90,4 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 }
+
