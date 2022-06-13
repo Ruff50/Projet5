@@ -23,11 +23,11 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 */
 Route::middleware(['auth'])->group(function () {
     Route::resource('Users',Userscontroller::class);
-Route::get('/', function () {
-    return view('index');})->name('home');
+
 });
 
-
+Route::get('/', function () {
+    return view('index');})->name('home');
 
 //cherche tous les commentaires 
 Route::get('/commentaire',[CommentaireControllerer::class, 'getComm'])->name('Commentaire');
