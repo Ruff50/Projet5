@@ -6,6 +6,10 @@ use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\CentreInteretController;
 use App\Http\Controllers\Membrecontroller;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\RolesController;
+>>>>>>> crudUser
 use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as RoutingRoute;
@@ -21,6 +25,7 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 |
 */
 Route::middleware(['auth'])->group(function () {
+    Route::resource('Users',Userscontroller::class);
 Route::get('/', function () {
     return view('index');})->name('home');
 });
@@ -62,6 +67,7 @@ Route::post('login', [Authcontroller::class, 'login_action'])->name('login.actio
 
 Route::get('signout', [Authcontroller::class, 'logout'])->name('signout');
 
+<<<<<<< HEAD
 
 
 // Les centres d'intérets
@@ -80,3 +86,9 @@ Route::post('/centreinteret/{id}/edit',[CentreInteretController::class, 'update'
 
 
 Route::resource('Users',Userscontroller::class);
+=======
+Route::get('/roles_user/{id}/edit',[RolesController::class, 'edit'])->whereNumber('id')->name('roles_user.edit');
+
+Route::post('/roles_user/{id}/edit',[RolesController::class, 'update'])->name('roles_user.update');
+
+>>>>>>> crudUser

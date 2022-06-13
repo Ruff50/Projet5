@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class Userscontroller extends Controller
@@ -17,7 +18,7 @@ class Userscontroller extends Controller
     public function index()
     {
         $users = User::with('roles')->get();
-        
+    
         return view(
             'Users.index',
             [
@@ -44,7 +45,55 @@ class Userscontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->input();
+        $request->validate([
+            'prenom' => 'required|max:255',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required',
+            'ddn' => 'required',
+            'sexe' => 'required',
+            'metier' => 'required',
+        ]);
+
+        $util = new User();
+        $util->prenom = $request->prenom;
+        if (null!==($request->file('avatar'))) {
+            $name = $request->file('avatar')->getClientOriginalName();
+            $extension = $request->file('avatar')->getClientOriginalExtension();
+                 
+            if (($name) && ($extension)) {
+                $path = $request->file('avatar')->store('/images', 'public');
+                $util->avatar = $path;
+            } else {
+                return redirect()->route('Users.index')->with('status', "problème lors du chargement de l'avatar");
+            } 
+        }else {
+                return redirect()->route('Users.index')->with('status', 'veuillez sélectionner une image pour votre avatar svp'); 
+
+            }
+            if (null!==($request->file('pcouverture'))) {
+                $name = $request->file('pcouverture')->getClientOriginalName();
+                $extension = $request->file('pcouverture')->getClientOriginalExtension();
+                     
+                if (($name) && ($extension)) {
+                    $path = $request->file('pcouverture')->store('/images', 'public');
+                    $util->pcouverture= $path;
+                } else {
+                    return redirect()->route('Users.index')->with('status', "problème lors du chargement de la photo de couverture");
+                } 
+            }else {
+                    return redirect()->route('Users.index')->with('status', 'veuillez sélectionner une image pour votre couverture svp'); 
+    
+                }
+            $util->name = $request->name;
+            $util->email = $request->email;
+            $util->password =Hash::make($request->password);
+            $util->ddn = $request->ddn;
+            $util->sexe = $request->sexe;
+            $util->metier = $request->metier;
+            $util->save();
+            return redirect()->route('Users.index')->with('status', "l'utilisateur a bien été ajouté !");
     }
 
     /**
@@ -55,7 +104,11 @@ class Userscontroller extends Controller
      */
     public function show($id)
     {
-        //
+        $membre = User::findOrFail($id);
+        
+        return view('Users.show', [
+            'util' => $membre,
+        ]);
     }
 
     /**
@@ -66,7 +119,11 @@ class Userscontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $membre= User::find($id);
+        
+        return view('Users.edit', [
+            'util' => $membre
+     ]);
     }
 
     /**
@@ -78,7 +135,51 @@ class Userscontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $request->validate([
+            'prenom' => 'required|max:255',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required',
+            'ddn' => 'required',
+            'sexe' => 'required',
+            'metier' => 'required',
+            ]);
+        $membre= User::find($id);
+        if (null!==($request->file('avatar'))) {
+        $name = $request->file('avatar')->getClientOriginalName();
+        $extension = $request->file('avatar')->getClientOriginalExtension();
+             
+        if (($name) && ($extension)) {
+            $path = $request->file('avatar')->store('/images', 'public');
+            $membre->avatar = $path;
+        } else {
+            return redirect()->route('Users.index')->with('status', "problème lors du chargement de l'avatar");
+        } 
+        }
+        if (null!==($request->file('pcouverture'))) {
+            $name = $request->file('pcouverture')->getClientOriginalName();
+            $extension = $request->file('pcouverture')->getClientOriginalExtension();
+                 
+            if (($name) && ($extension)) {
+                $path = $request->file('pcouverture')->store('/images', 'public');
+                $membre->pcouverture = $path;
+            } else {
+                return redirect()->route('Users.index')->with('status', "problème lors du chargement de la photo de couverture");
+            } 
+            }
+            $membre->prenom = $request->prenom;
+            
+            $membre->name = $request->name;
+            $membre->email = $request->email;
+            $membre->password =$request->password;
+            $date = $request->ddn; //we got DD/MM/YYYY format date from form post data
+            $membre->ddn = date('Y/m/d', strtotime($date)); 
+            $membre->sexe = $request->sexe;
+            $membre->metier = $request->metier;
+          
+            $membre->save();
+            return redirect()->route('Users.index')->with('status', "l'utilisateur a bien été modifié !");
     }
 
     /**
@@ -89,7 +190,8 @@ class Userscontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return  redirect()->route('Users.index')->with('status', "l'utilisateur a bien été supprimé !");
     }
 }
 
