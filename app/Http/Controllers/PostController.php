@@ -72,7 +72,8 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $users = User::all();
-        $comments= Commentaire::all();
+        
+        $comments = Commentaire::where('posts_id', '!=', '0')->with('users')->orderBy('created_at', 'DESC')->get();
        
        
         return view('welcome', [
@@ -174,6 +175,6 @@ public function comment(Request $request)
     $comments->comment = $request->comments;
     $comments->ddc = now();
     $comments->save();
-    return redirect('/')->with('commajouté', 'ok');
+    return redirect('/')->with('commentaire ajouter', 'ok');
 }
 }

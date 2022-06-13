@@ -271,7 +271,7 @@
                                 <div class="bg-white shadow rounded-lg mb-6">
                                     <div class="flex flex-row px-2 py-3 mx-3">
                                         <div class="w-auto h-auto rounded-full">
-                                            <img class="w-20" src="/storage/{{ $user->avatar }}">
+                                            <img class="w-20" src="/storage/{{ $user->avatar }}" class="h-8 w-8 rounded-full">
                                         </div>
                                         <div class="flex flex-col mb-2 ml-4 mt-1">
                                             <div class="text-gray-600 text-sm font-semibold">{{ $user->nom }}</div>
@@ -396,7 +396,7 @@
                                         </form>
                                     </div>
                                     <div class="flex flex-col items-center ">
-                                    @foreach ($comments as $comment)
+                                    @foreach ($comments->where('posts_id', '=', $post->id)  as $comment)
                                        <div class="flex my-3 "> 
                                             <img src="/storage/{{ $user->avatar }}" class="h-8 w-8 rounded-full">
 
@@ -412,9 +412,14 @@
                                                                     <small>{{ $user->name }}</small>
                                                                 </a>
                                                             </div>
+                                        
+                                                                
+                                                            
                                                             <div class="text-xs w-full">
                                                                 {{ $comment->comment }}
                                                             </div>
+                                                   
+
                                                         </div>
                                                         <div
                                                             class="self-stretch flex justify-center items-center transform transition-opacity duration-200 opacity-0 hover:opacity-100">

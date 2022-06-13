@@ -9,7 +9,7 @@ class Commentaire extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
