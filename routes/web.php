@@ -21,7 +21,6 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 |
 */
 
-
 Route::get('/', [PostController::class, 'accueil'])->name('welcome');
 Route::get('/post', [PostController::class, 'getall'])->name('post');
 Route::post('/post', [PostController::class, 'create'])->name('post');
@@ -29,6 +28,9 @@ Route::delete('/delete/{id}', [PostController::class, 'delete'])->whereNumber('i
 Route::post('/update/{id}', [PostController::class, 'update'])->name('update');
 Route::get('/crud', [PostController::class, 'crud'])->name('crud');
 Route::post('/crud', [PostController::class, 'creates'])->name('creates');
+Route::post('/comment', [PostController::class, 'comment'])->name('comment');
+Route::get('/comment', [PostController::class, 'comment'])->name('comment');
+
 
 
 Route::middleware(['auth'])->group(function () {

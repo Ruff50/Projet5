@@ -17,10 +17,10 @@ class Post extends Model
         return $this->HasOne(User::class,'users_id');
     }
 
-   // public function commentaires()
-  //  {
-  //      return $this->hasMany(Commentaire::class, 'posts_id','id' ); // ici il faut préciser le nom de la clé étrangere sinon laravel met une par défaut selon la nomenclature basique
- //   }
-
+  
+ public function comment()
+ {
+     return $this->hasMany(Comments::class, 'id', 'users_id', 'posts_id', 'comment' )->orderBy('created_at', 'DESC');
+ }
 
 }

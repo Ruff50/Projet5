@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Membre;
 use App\Models\Post;
 use App\Models\User;
@@ -23,12 +24,14 @@ class PostController extends Controller
         
             $posts = Post::all();
             $users = User::all();
+           
             
     
             return view('post', [
-                //'films' c'est la variable utilisé dans le view et $films c'est la variable de la fonction 
+                
                 'posts' => $posts,
                 'users' => $users,
+                
                 
     
             ]);
@@ -69,6 +72,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $users = User::all();
+        $comments= Commentaire::all();
        
        
         return view('welcome', [
@@ -76,7 +80,7 @@ class PostController extends Controller
             
             'posts' => $posts,
             'users' => $users,
-            
+            'comments' => $comments,
 
 
 
@@ -159,5 +163,17 @@ public function creates(Request $request)
 
 
     
+}
+
+public function comment(Request $request)
+{
+   
+    $comments = new Commentaire();
+    $comments->users_id = $request->users_id;
+    $comments->posts_id = $request->posts_id;
+    $comments->comment = $request->comments;
+    $comments->ddc = now();
+    $comments->save();
+    return redirect('/')->with('commajouté', 'ok');
 }
 }

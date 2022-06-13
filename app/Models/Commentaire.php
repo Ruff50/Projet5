@@ -9,8 +9,14 @@ class Commentaire extends Model
 {
     use HasFactory;
 
-    public function post() {
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-        return $this->belongsTo(Post::class, 'posts_id');
+    public function post()
+    {
+        return $this->belongsTo(Posts::class, 'post_id');
     }
 }
+

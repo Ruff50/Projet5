@@ -43,8 +43,8 @@ rel="stylesheet">
   <td class="px-4 py-3">{{$post->titre}}</td>
   <td class="px-4 py-3">{{$post->contenu}}</td>
   <td class="px-4 py-3"><img class="w-20" src="/storage/{{$post->photo}}"></td>
-  <td class="px-4 py-3"><a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-  <i class="material-icons-outlined text-base">visibility</i></a> </td>
+  <td class="px-4 py-3">@include('includes.view')</td>
+ 
 <td class="px-4 py-3">@include('includes.delete') </td>
 <td class="px-4 py-3">@include('includes.update')
    <td>	
