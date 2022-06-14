@@ -50,17 +50,20 @@ class User extends Authenticatable
     }
 
 
+
     public function centreinterets()
     
     {
         return $this->belongsToMany(CentreInteret::class, 'user_interets', 'users_id', 'ci_id' );
     }
     
+
     //post() de Florent
     public function post()
     {
         return $this->belongsTo(Posts::class, 'post_id');
     }
+
 
     public function posts()
     {
@@ -94,3 +97,4 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 }
+

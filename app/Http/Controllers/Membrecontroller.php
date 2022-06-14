@@ -96,6 +96,9 @@ class Membrecontroller extends Controller
                     return redirect()->route('home')->with('status', "problème lors du chargement de l'image");
                 } 
                 }*/
+                $member->ddn = $request->ddn;
+                $member->sexe = $request->sexe;
+                $member->metier = $request->metier;   
             $member->save();
             return redirect()->route('profile', $member->id)->with('status', 'votre profil a bien été modifié !');
         } else {

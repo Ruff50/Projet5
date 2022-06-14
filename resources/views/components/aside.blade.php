@@ -52,7 +52,7 @@
     </div>
 
     <div class=" my-2 p-2 flex justify-center">
-        <a href="/amis"
+        <a href="{{route('amis')}}"
             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -80,12 +80,16 @@
                 </svg>
             </span>
             <span class="ml-2 text-sm tracking-wide truncate">Lists</span>
+           
         </a>
     </div>
 
     <div class=" my-2 p-2 flex justify-center">
+        @if (null!==(Auth::user()))
         <a href="/profilepub/{{Auth::user()->id}}"
+            
             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+            @endif
             <span class="inline-flex justify-center items-center ml-4">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">

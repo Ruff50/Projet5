@@ -13,6 +13,17 @@
                     </svg>
                 </button>
             </div>
+            <nav class="hidden md:flex space-x-10">
+          
+      
+            
+      
+           
+            </nav>
+            <div class="hidden md:flex items-center justify-evenly md:flex-1 lg:w-0">
+          
+           
+          </div>
         </div>
     
             <!-- This is an example component -->
@@ -32,7 +43,7 @@
                 </button>
             </div>
             <div class="flex ">
-                 @guest
+                @guest
                 <a href="/login"
                    class="block text-md px-4 py-2 rounded text-white ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign
                     in</a>
@@ -42,7 +53,8 @@
                    @endguest 
                    @auth
                    <a href="{{route('signout') }}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Logout </a>
-                   <a href="/" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> posts </a>
+                   <a href="{{route('Users.index')}}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Dashboard </a>
+                   <a href="/" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Home </a>
                    @endauth
             </div>
         </div>

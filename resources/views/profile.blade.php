@@ -95,7 +95,28 @@
                 </div>
               </div>
             </div>
-
+            <div class="mb-6">
+              <label for="ddn">date de naissance:</label>
+                  <input id="date" name="ddn" type="date" value="{{$membre->ddn}}" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+            </div>      
+          <div>
+            <label for="sexe">Sexe :</label>
+                    <div>
+                        <input type="radio" id="sexeHomme" name="sexe" @if ($membre->sexe===1) checked @endif value="1">
+                        <label for="sexeHomme">Homme</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="sexeFemme" name="sexe" @if ($membre->sexe===0) checked @endif value="0">
+                        <label for="sexeFemme">Femme</label>
+                    </div>
+                    <div>
+                      <br>
+                      <div class="metier">
+                        <label for="metier">Métier:</label>
+                        <input id="metier" type="text" name="metier" value="{{$membre->metier}}" class="w-full rounded p-3 text-gray-800 dark:text-gray-50 dark:bg-slate-700
+                        border-gray-500 dark:border-slate-600 outline-none focus-visible:shadow-none focus:border-primary"
+                        >
+                    </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button type="submit" name="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
             </div>

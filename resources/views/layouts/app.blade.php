@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{{ asset('./css/app.css') }}">
     <script src="https://kit.fontawesome.com/dcd65f6d8c.js" crossorigin="anonymous"></script>
 </head>
+
 <body >
+
     <header>
         @include('layouts.header')
     </header>

@@ -5,7 +5,7 @@
 
 
         <div class="w-1/2">
-            <H1 class="text-7xl"> Quels sont vos centres d'interets ?</H1>
+            <h1 class="text-2xl"> Quels sont vos centres d'interets ?</h1>
         </div>
 
 
@@ -20,12 +20,22 @@
 
                     @foreach ($cinterets as $cinteret)
                         <option 
+
                             @foreach ($user->centreinterets as $cint)
                              @if ($cint->id === $cinteret->id) selected @endif
                              @endforeach
                              value="{{ $cinteret->id }}">
                              {{ $cinteret->label }}
                         </option>
+
+                            @foreach ($user->centreinterets as $cint) @if ($cint->id === $cinteret->id) selected @endif
+                            @endforeach
+                            value="{{ $cinteret->id }}">
+
+                            {{ $cinteret->label }}
+                        </option>
+                       
+
                     @endforeach
 
 
