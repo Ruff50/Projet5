@@ -20,6 +20,14 @@
 
                     @foreach ($cinterets as $cinteret)
                         <option 
+
+                            @foreach ($user->centreinterets as $cint)
+                             @if ($cint->id === $cinteret->id) selected @endif
+                             @endforeach
+                             value="{{ $cinteret->id }}">
+                             {{ $cinteret->label }}
+                        </option>
+
                             @foreach ($user->centreinterets as $cint) @if ($cint->id === $cinteret->id) selected @endif
                             @endforeach
                             value="{{ $cinteret->id }}">
@@ -27,6 +35,7 @@
                             {{ $cinteret->label }}
                         </option>
                        
+
                     @endforeach
 
 
