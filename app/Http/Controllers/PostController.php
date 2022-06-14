@@ -16,7 +16,7 @@ class PostController extends Controller
 {
 
     $comments = new Commentaire();
-    $comments->users_id = $request->users_id;
+    $comments->user_id = $request->users_id;
     $comments->posts_id = $request->posts_id;
     $comments->comment = $request->comments;
     $comments->ddc = now();
@@ -45,7 +45,7 @@ class PostController extends Controller
     {
         $membre= User::with('posts')->get();
         // $posts = Post::all();
-        $posts = Post::paginate();
+        $posts = Post::paginate(3);
        
         
         return view('index', [

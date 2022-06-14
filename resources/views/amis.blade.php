@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('main')
     <div class="flex flex-col">
-
+        @if (session('status'))
+        <div class="text-3xl text-left font-bold text-green-600 mt-20 mb-10">
+            {{ session('status') }}
+        </div>
+    @endif
         <div>
             <div class="aligns-items">
                 <h1 class="text-4xl"> Invitations</h1>

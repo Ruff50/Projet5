@@ -5,6 +5,8 @@ use App\Models\Amis;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
+use Throwable;
+
 class AmisController extends Controller
 {
     /**
@@ -18,14 +20,20 @@ class AmisController extends Controller
     {
        
         // ici la demande c'est pas bon, l'ajout doit aller chez l'autre mec, et non retourner chez moi
-        $amis = User::all();
+        $amis = User::when(request('amis_id'), function($query) {
+            $query->where('user_id', request('user_id'));
+       })->latest()
+       ->get();
         // $demandes =User::all();
         $demandes =User::with('amis')->where('id', auth()->user()->id)->first();
+     
+        //
         //on récuperer un user( donc un first) avec ses amis donc on est obligé de faire un get  
         //les amis (tableaux) on fait un get pour les récupérers
         return view('amis', [
             'amis' => $amis,
-            'demandes' => $demandes->amis()->where('accepted', 0)->get(),
+            'demandes' => $demandes->amis()->where('accepted', 0)->get()
+            //$demandes->amis()->where('accepted', 0)->get(),
             //ici on récupere list d'amis donc get()
         ]);
     }
@@ -50,6 +58,8 @@ class AmisController extends Controller
      */
     public function storeamis(Request $request)
     {
+        try {
+            // Validate the value...
        
         $validate = $request->validate([
     
@@ -64,6 +74,11 @@ class AmisController extends Controller
         $amis->user_id = $validate['user_id'];
         $amis->accepted = $validate['accepted'];
         $amis->save();
+    } catch (Throwable $e) {
+        report($e);
+        return redirect()->route('amis')->with('status', 'vous êtes déjà ami ou vous avez déjà fait la demande');
+        return false;
+    }
         // $amis->amis()->attach($validate['amis_id']);
         return redirect()->route('amis');
     }
