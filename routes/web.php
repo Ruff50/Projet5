@@ -30,8 +30,15 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+
+// celle de Florent
+Route::post('/comment', [PostController::class, 'comment'])->name('comment');
+Route::get('/comment', [PostController::class, 'comment'])->name('comment');
+
+
 Route::get('/', function () {
     return view('index');})->name('home');
+
 
 //cherche tous les commentaires 
 Route::get('/commentaire',[CommentaireControllerer::class, 'getComm'])->name('Commentaire');
@@ -88,7 +95,6 @@ Route::post('/roles_user/{id}/edit',[RolesController::class, 'update'])->name('r
 
 
 
-
 // Les posts de la page d'accueil 
 
 
@@ -107,9 +113,17 @@ Route::get('/profilepub/{id}', [MembreController::class, 'showprofile'])->whereN
 
 // Les amis
 
+
+Route::get('/amis',[Amiscontroller::class, 'showamis'])->name('amis');
+
 Route::get('/amis',[AmisController::class, 'showamis'])->name('amis');
+
 // Route::get('/amis/',[Amiscontroller::class, 'showdemandeamis'])->name('demandeamis');
 Route::post('/amis/store',[AmisController::class, 'storeamis'])->name('amis.store');
 
 // accepter un amis
+
+Route::post('/amis/edit',[Amiscontroller::class, 'acceptamis'])->name('amis.accept');    
+
 Route::post('/amis/accept',[AmisController::class, 'acceptamis'])->name('amis.accept');    
+
