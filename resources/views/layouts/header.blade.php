@@ -52,7 +52,7 @@
                    class=" block text-md px-4  ml-2 py-2 rounded text-white font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign up</a>
                    @endguest 
                    @auth
-                   <a href="{{route('Users.index')}}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Dashboard </a>
+                   
                    <a href="/" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white ">    <span class="inline-flex justify-center items-center ml-4">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -82,8 +82,9 @@
                     <div x-show="dropdown" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                       <!-- Active: "bg-gray-100", Not Active: "" -->
                       <a href="/profilepub/{{Auth::user()->id}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+                      <a href="{{route('Users.index')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Dashboard</a>
                       <a href="{{route('signout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-                    </div>
+                  </div>
                   </div>
                    @endauth
             </div>
