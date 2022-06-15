@@ -32,8 +32,11 @@ Route::middleware(['auth'])->group(function () {
 
 
 // celle de Florent
+Route::get('/index', [PostController::class, 'index'])->name('index');
+Route::post('/index', [PostController::class, 'create'])->name('index');
 Route::post('/comment', [PostController::class, 'comment'])->name('comment');
 Route::get('/comment', [PostController::class, 'comment'])->name('comment');
+Route::delete('/delete/{id}', [PostController::class, 'delete'])->whereNumber('id')->name('delete');
 
 
 Route::get('/', function () {
