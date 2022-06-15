@@ -20,7 +20,7 @@
             @if (null!==(Auth::user()))
              <img class="w-12 h-12 object-cover rounded-full shadow cursor-pointer"
                 alt="User avatar"
-                src="{{asset('storage/' . Auth::user()->avatar)}}">
+                src="{{asset('storage/' . $post->user->avatar)}}">
                 @endif
         </div>
         <div class="flex flex-col mb-2 ml-4 mt-1 ">
