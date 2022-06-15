@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {   
@@ -14,7 +14,7 @@ class PostController extends Controller
     //celle de florent
     public function comment(Request $request)
 {
-
+//dd($request->posts_id);
     $comments = new Commentaire();
     $comments->user_id = $request->users_id;
     $comments->posts_id = $request->posts_id;
@@ -43,15 +43,17 @@ class PostController extends Controller
 
     public function index()
     {
-        $membre= User::with('posts')->get();
+        $users= User::with('posts')->get();
         // $posts = Post::all();
-        $posts = Post::paginate(3);
+       $posts = Post::paginate(3);
+        $comments = Commentaire::all();
        
         
         return view('index', [
             'posts' => $posts,
-            'membre' => $membre
-            ,
+            'users' => $users,
+            'comments' => $comments,
+            
         ]);
     }
 
@@ -60,9 +62,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+
+
+       $path = Storage::disk('public')->put('img', $request->file('images'));
+        $posts = Post::with('users')->where('user_id','=','id')->get();
+        $users = User::all();
+        $posts = Post::create([
+            'titre' => $request->titre,
+            'contenu' => $request->contenu,
+            'ddp' => NOW(),
+            'censure' => $request->censure,
+           'photo' => $path,
+            'users' => $users,
+            'user_id' => $request->id
+
+
+        ]);
+
+
+
+        $posts->save();
+
+
+        return redirect()->route('index')->with('success', 'Post ajouté');
     }
 
     /**
@@ -107,8 +132,27 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+    
+        $path = Storage::disk('public')->put('img', $request->file('images'));
+            $posts = Post::find($id);
+           
+            $posts->update([
+               
+                'titre' => $request->titre,
+                'contenu' => $request->contenu,
+                'ddp' => NOW(),
+                'censure' => $request->censure,
+                'photo' => $path,
+                
+            ]);
+                
+            
+             
+            $posts->save();
+           
+    
+            return redirect()->route('index')->with('success', 'Post ajouté');
+        }
 
     /**
      * Remove the specified resource from storage.
