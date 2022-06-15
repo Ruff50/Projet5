@@ -65,27 +65,19 @@ class PostController extends Controller
     public function create(Request $request)
     {
 
+//dd($request);
 
-
-       $path = Storage::disk('public')->put('img', $request->file('images'));
-        $posts = Post::with('users')->where('user_id','=','id')->get();
-        $users = User::all();
-        $posts = Post::create([
-            'titre' => $request->titre,
-            'contenu' => $request->contenu,
-            'ddp' => NOW(),
-            'censure' => $request->censure,
-           'photo' => $path,
-            'users' => $users,
-            'user_id' => $request->id
-
-
-        ]);
-
-
-
-        $posts->save();
-
+       $path = Storage::disk('public')->put('images', $request->file('images'));
+       // $posts = Post::with('users')->where('user_id','=','id')->get();
+        //$users = User::all();
+        $post = new Post();
+        $post->user_id = $request->users_id;
+        $post->titre = $request->titre;
+        $post->contenu = $request->contenu;
+        $post->ddp = NOW();
+        $post->censure = $request->censure;
+        $post->photo = $path;
+        $post->save();
 
         return redirect()->route('index')->with('success', 'Post ajouté');
     }

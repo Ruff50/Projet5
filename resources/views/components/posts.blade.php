@@ -31,7 +31,10 @@
     </a>
     <div class="border-b border-gray-100"></div>
     <div class="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
-        <img class="rounded w-full" src="{{asset('storage/' .$post->photo)}}">
+        
+        <img class="rounded w-full" src="{{asset('storage/' .$post->photo)}}">   
+      
+       
     </div>
     <div class="text-gray-600 font-semibold  mb-2 mx-3 px-2">{{$post->titre}} </div>
     <div class="text-gray-500 text-sm mb-6 mx-3 px-2">{{$post->contenu}}</div>
