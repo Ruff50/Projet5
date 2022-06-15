@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class PostController extends Controller
     public function index()
     {
         $users= User::with('posts')->get();
-        // $posts = Post::all();
+       $likes = Like::all();
        $posts = Post::paginate(3);
         $comments = Commentaire::all();
        
@@ -53,6 +54,7 @@ class PostController extends Controller
             'posts' => $posts,
             'users' => $users,
             'comments' => $comments,
+            'likes' => $likes
             
         ]);
     }
@@ -156,4 +158,17 @@ class PostController extends Controller
     {
         //
     }
+
+    public function PostLike(Request $request)
+    {
+
+        $like = new Like();
+
+        $like->posts_id = $request->post_id;
+        $like->user_id = $request->user_id;
+        $like->save();
+        return redirect()->back();
+    }
+
+
 }

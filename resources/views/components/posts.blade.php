@@ -93,13 +93,24 @@
         </div>
         <div class="mt-3 mx-5 w-full flex justify-end text-xs">
             <div class="flex text-gray-700  rounded-md mb-2 mr-4 items-center">Likes: <div
-                    class="ml-1 text-gray-400 text-ms"> </div>
+                    class="ml-1 text-gray-400 text-ms">{{$likes->where('posts_id', '=', $post->id)->count()  }} </div>
             </div>
             
         </div>
         
     </div>
-
+    <div class=" flex flex-col h-64">
+    <form action="{{ route('like') }}" method="post">
+        @csrf
+        <input type="hidden" name="post_id" value="{{$post->id}}">
+        <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
+        <button style="background-color:rgb(59 130 246)"
+        class="bg-blue-500 hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+        + j'aime
+      
+</button>
+</form>
+    </div>
     {{-- formulaire de commentaire   --}}
     <div class=" flex flex-col h-64">
      @include('components.commentaireform')  

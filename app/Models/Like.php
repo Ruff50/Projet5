@@ -20,4 +20,6 @@ class Like extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+
 }

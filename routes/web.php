@@ -128,5 +128,7 @@ Route::post('/amis/store',[AmisController::class, 'storeamis'])->name('amis.stor
 
 Route::post('/amis/edit',[Amiscontroller::class, 'acceptamis'])->name('amis.accept');    
 
-Route::post('/amis/accept',[AmisController::class, 'acceptamis'])->name('amis.accept');    
+Route::post('/amis/accept',[AmisController::class, 'acceptamis'])->name('amis.accept');
+
+Route::post('/like',[PostController::class, 'PostLike'])->name('like');
 
