@@ -1,5 +1,12 @@
 
-    
+ 
+ @if (session('status'))
+ <div class="text-3xl text-left font-bold text-green-600 mt-20 mb-10">
+     {{ session('status') }}
+ </div>
+@endif
+
+
 @foreach ($posts as $post)
 
 
@@ -31,10 +38,9 @@
     </a>
     <div class="border-b border-gray-100"></div>
     <div class="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
-        
+        @if (($post->photo)!=="")
         <img class="rounded w-full" src="{{asset('storage/' .$post->photo)}}">   
-      
-       
+      @endif
     </div>
     <div class="text-gray-600 font-semibold  mb-2 mx-3 px-2">{{$post->titre}} </div>
     <div class="text-gray-500 text-sm mb-6 mx-3 px-2">{{$post->contenu}}</div>
@@ -99,11 +105,13 @@
         </div>
         
     </div>
-    <div class=" flex flex-col h-64">
+    <div class=" flex flex-col">
     <form action="{{ route('like') }}" method="post">
         @csrf
         <input type="hidden" name="post_id" value="{{$post->id}}">
+        @if (null!=Auth::user())
         <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
+        @endif
         <button style="background-color:rgb(59 130 246)"
         class="bg-blue-500 hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
         + j'aime

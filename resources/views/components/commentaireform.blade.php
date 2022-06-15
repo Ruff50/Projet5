@@ -15,13 +15,23 @@
                 style="border-radius: 25px" placeholder="Ajouter un commentaire..." autocomplete="off" name="comments">
 
             <input type="hidden" name="posts_id" value="{{ $post->id }}">
+            @if (null!=Auth::user())
             <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+            @endif
             <input type="submit" class="sr-only" value="valider">
         </form>
     </div>
     <div class="flex flex-col items-center ">
-       
+        <?php
+        $compteur=0;
+        ?>
         @foreach ($comments->where('posts_id', '=', $post->id) as $comment)
+        <?php
+        $compteur+=1;
+        if ($compteur>2){
+            break;
+        }
+        ?>
             <div class="flex my-3 ">
                 <img src="{{asset('storage/' . $comment->user->avatar)}}" class="h-8 w-8 rounded-full">
 

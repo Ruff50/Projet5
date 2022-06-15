@@ -22,7 +22,7 @@ class PostController extends Controller
     $comments->comment = $request->comments;
     $comments->ddc = now();
     $comments->save();
-    return redirect('/')->with('commentaire ajouter', 'ok');
+    return redirect('/')->with('status', 'commentaire ajouté avec succès !');
 }
     /**
      * Display a listing of the resource.
@@ -44,10 +44,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $users= User::with('posts')->get();
+        $users= User::with('posts')->latest()->get();
        $likes = Like::all();
        $posts = Post::paginate(3);
-        $comments = Commentaire::all();
+        $comments = Commentaire::all()->sortDesc();
        
         
         return view('index', [
@@ -81,7 +81,7 @@ class PostController extends Controller
         $post->photo = $path;
         $post->save();
 
-        return redirect()->route('index')->with('success', 'Post ajouté');
+        return redirect()->route('index')->with('status', 'Post ajouté avec succès !');
     }
 
     /**
