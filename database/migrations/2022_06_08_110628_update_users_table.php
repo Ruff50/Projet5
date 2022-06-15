@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
            
-            $table->string('prenom');
-            $table->date('ddn');
-            $table->boolean('sexe');
+            $table->string('prenom')->nullable();;
+            $table->date('ddn')->nullable();;
+            $table->boolean('sexe')->nullable();;
             $table->string('avatar')->nullable();
             $table->string('pcouverture')->nullable();
             $table->string('metier',255)->nullable();

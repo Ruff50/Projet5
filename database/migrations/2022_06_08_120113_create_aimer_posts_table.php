@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('posts_id');
             $table->foreign('posts_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');   
-            $table->integer('nblike');
             $table->date('ddl')->nullable();
             $table->timestamps();
         });

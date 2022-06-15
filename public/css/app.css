@@ -3357,6 +3357,19 @@ body[dir="rtl"] .checkbox:checked,
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
+<<<<<<< HEAD
+=======
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+>>>>>>> e1e35e2e3f5466144c1506f446fe6d6b90e7f1ca
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -3613,11 +3626,20 @@ body[dir="rtl"] .checkbox:checked,
 .p-1 {
   padding: 0.25rem;
 }
+<<<<<<< HEAD
+=======
+.p-3 {
+  padding: 0.75rem;
+}
+.p-10 {
+  padding: 2.5rem;
+}
+>>>>>>> e1e35e2e3f5466144c1506f446fe6d6b90e7f1ca
 .p-8 {
   padding: 2rem;
 }
-.p-3 {
-  padding: 0.75rem;
+.p-6 {
+  padding: 1.5rem;
 }
 .p-10 {
   padding: 2.5rem;
@@ -3784,9 +3806,12 @@ body[dir="rtl"] .checkbox:checked,
 .align-middle {
   vertical-align: middle;
 }
+<<<<<<< HEAD
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
+=======
+>>>>>>> e1e35e2e3f5466144c1506f446fe6d6b90e7f1ca
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -4387,9 +4412,15 @@ body[dir="rtl"] .checkbox:checked,
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
 
+<<<<<<< HEAD
   .dark\:bg-indigo-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+=======
+  .dark\:bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+>>>>>>> e1e35e2e3f5466144c1506f446fe6d6b90e7f1ca
   }
 
   .dark\:bg-gray-800 {
@@ -4397,9 +4428,15 @@ body[dir="rtl"] .checkbox:checked,
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   }
 
+<<<<<<< HEAD
   .dark\:bg-slate-700 {
     --tw-bg-opacity: 1;
     background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+=======
+  .dark\:bg-slate-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+>>>>>>> e1e35e2e3f5466144c1506f446fe6d6b90e7f1ca
   }
 
   .dark\:bg-slate-800 {

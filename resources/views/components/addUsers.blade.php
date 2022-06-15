@@ -75,7 +75,7 @@
         <input type="email" placeholder="sophie@example.com" size="30" name="email" >
       </div>
       <div class="mb-6">
-        <label for="password" class="sr-only">Password</label>
+        <label for="password">Entrez votre mot de passe svp:</label>
         <input id="password" name="password" type="password" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password" >
       </div>
       <div class="mb-6">

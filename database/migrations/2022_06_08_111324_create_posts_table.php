@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('titre',255);
             $table->longText('contenu')->nullable();
-            $table->date('ddp');
-            $table->string('photo',255);
-            $table->string('video',255);
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->boolean('censure');
+            $table->date('ddp')->nullable();
+            $table->string('photo',255)->nullable();
+            $table->string('video',255)->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('censure')->nullable();
             $table->timestamps();
         });
     }
