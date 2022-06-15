@@ -22,7 +22,7 @@
     <div class="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
         
             <div class="w-full overflow-hidden rounded-xl col-span-3 max-h-[14rem]">
-                <img class="h-full w-full object-cover " src="{{$post->photo}}" alt="">
+                <img class="h-full w-full object-cover " src="{{asset('storage/' . $post->photo)}}" alt="">
             </div>
             
         
