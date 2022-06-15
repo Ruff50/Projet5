@@ -6,9 +6,11 @@
     <a href="/profilepub/{{$post->user->id}}"> 
     <div class="flex flex-row px-2 py-3 mx-3">
         <div class="w-auto h-auto rounded-full border-2 border-green-500">
-            <img class="w-12 h-12 object-cover rounded-full shadow cursor-pointer"
+            @if (null!==(Auth::user()))
+             <img class="w-12 h-12 object-cover rounded-full shadow cursor-pointer"
                 alt="User avatar"
                 src="{{asset('storage/' . $post->user->avatar)}}">
+                @endif
         </div>
         <div class="flex flex-col mb-2 ml-4 mt-1">
             <div class="text-gray-600 text-sm font-semibold">{{$post->user->name}} </div>

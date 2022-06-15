@@ -17,8 +17,10 @@
     </div> --}}
      <div
       class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
+      @if (null!==(Auth::user()))
       <img class="w-10 h-10 object-cover rounded-full shadow mr-2 cursor-pointer" alt="User avatar"
           src="{{asset('storage/' . Auth::user()->avatar)}}">
+          @endif
  <form action="/comment" method="POST" enctype="multipart/form-data" class="w-full">
      @csrf
      <input type="search"
@@ -26,7 +28,9 @@
          style="border-radius: 25px" placeholder="Ajouter un commentaire..." autocomplete="off" name="comments">
 
      <input type="hidden" name="posts_id" value="{{ $post->id }}">
+     @if (null!==(Auth::user()))
      <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+     @endif
      <input type="submit" class="sr-only" value="valider">
  </form>
  </div>
